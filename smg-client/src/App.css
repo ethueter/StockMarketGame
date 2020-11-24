@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.SignIn-container {
+  
+  display: flex;
+  justify-content: center
+}
+
+.SignIn-card {
+  max-width: 30pc;
+}
+
+.LoginCard-content {
+  
+  display: flex;
+  flex-direction: column;
+}
