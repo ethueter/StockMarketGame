@@ -1,4 +1,4 @@
-package com.hcl.ashwin.tyler.ramiro.StockMarketGame;
+package com.hcl.StockMarketGame;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
