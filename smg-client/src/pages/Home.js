@@ -1,4 +1,8 @@
 import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import ToolBar from '@material-ui/core/Toolbar';
 
 
 const Home = () => {
@@ -6,7 +10,12 @@ const Home = () => {
 
     return (
         <div>
-            <h1>I'm a Home Page</h1>
+            <AppBar>
+                <ToolBar>
+                    <Button>Logout</Button>
+                </ToolBar>
+            </AppBar>
+            
         </div>
     );
 }
