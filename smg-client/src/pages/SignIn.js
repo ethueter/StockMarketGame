@@ -5,15 +5,17 @@ import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader';
 import TextField from '@material-ui/core/TextField';
 
+import Auth from '../services/auth';
 
-const SignIn = () => {
+
+
+const SignIn = (props) => {
     const [username, setUsername ] = useState("");
     const [password, setPassword ] = useState("");
     const [ login, setLogin ] = useState(true);
     const [ verified, setVerified ] = useState(false)
 
     const handleChange = (event) => {
-        console.log(event.target.id)
         if (event.target.id == "username") {
             console.log(event.target.value)
             setUsername(event.target.value);
@@ -26,22 +28,37 @@ const SignIn = () => {
     const verifyPassword = (event) => {
         if(event.target.value == password) setVerified(true);
     }
+    //These methods were used for initial setup and testing
+
+    // const loginUser = () => {
+    //   let user = {
+    //     username: username,
+    //     password: password
+    //   };
+    //   console.log(user);
+    // }
+
+    // const createUser = () => {
+    //   let newUser = {
+    //     username: username,
+    //     password: password
+    //   };
+    //   console.log(newUser);
+    // }
 
     const loginUser = () => {
-      let user = {
-        username: username,
-        password: password
-      };
-      console.log(user);
-    }
+        Auth.login(username, password)
+        .then(() => {
+            props.history.push("/home");
+        });
+    };
 
     const createUser = () => {
-      let newUser = {
-        username: username,
-        password: password
-      };
-      console.log(newUser);
-    }
+        Auth.newUser(username, password)
+            .then(() => {
+                props.history.push("/home");
+            });
+    };
 
     return (
       <div className="SignIn-container">
