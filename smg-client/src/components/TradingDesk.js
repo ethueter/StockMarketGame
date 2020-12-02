@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Card, CardHeader, CardContent, Typography, CardActions, Button, FormControl, InputLabel, Select, MenuItem, Input } from '@material-ui/core';
 
 
-const TradingDesk = ({ stocks }) => {
+const TradingDesk = ({ stocks, buy, sell, cash, portVal }) => {
     const [buying, setBuying] = useState(true);
     const [deskTarget, setDeskTarget] = useState({});
     const [numShares, setNumShares] = useState(0);
@@ -31,8 +31,8 @@ const TradingDesk = ({ stocks }) => {
         <Card variant="outlined">
           <CardHeader title="Trading Desk" />
           <CardContent>
-            <Typography>Portfolio Value: 0</Typography>
-            <Typography>Cash to Trade: $ 100,000.00</Typography>
+            <Typography>Portfolio Value: {portVal}</Typography>
+            <Typography>Cash to Trade: $ {cash}</Typography>
           </CardContent>
           <CardActions>
             <Button
@@ -80,7 +80,12 @@ const TradingDesk = ({ stocks }) => {
               Value: {getShareValue()}
           </Typography>
           <CardActions>
-            <Button size="large" variant="outlined" color="primary">
+            <Button 
+              size="large" 
+              variant="outlined" 
+              color="primary"
+              onClick={buying ? }
+              >
               Execute Trade
             </Button>
           </CardActions>
