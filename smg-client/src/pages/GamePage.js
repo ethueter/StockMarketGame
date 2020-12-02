@@ -26,7 +26,7 @@ const GamePage = () => {
                     <TradingDesk stocks={stocks}/>
             </Grid>
             <Grid item md={8}>
-                    <TradingFloor />
+                    <TradingFloor stocks={stocks}/>
             </Grid>
         </Grid>
         
