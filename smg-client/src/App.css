@@ -70,3 +70,7 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+.trading-desk {
+  border: 2px black;
+}

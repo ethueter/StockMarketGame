@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -12,9 +13,8 @@ const Home = () => {
       <div>
         <AppBar  color='inherit' position='relative'>
           <ToolBar className="toolbar">
-              
-            <Button>Logout</Button>
-                    <Button>Play Game</Button>
+            <Link component={Button} href="/">Logout</Link>
+            <Link component={Button} href="/game">Play Game</Link>
           </ToolBar>
         </AppBar>
         <HomeContainer />
