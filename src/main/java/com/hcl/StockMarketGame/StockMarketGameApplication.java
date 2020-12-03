@@ -2,9 +2,9 @@ package com.hcl.StockMarketGame;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+
 
 @ComponentScan({"com.hcl.StockMarketGame.repository","com.hcl.StockMarketGame.controller","com.hcl.StockMarketGame.service"})
 
@@ -17,4 +17,5 @@ public class StockMarketGameApplication {
 		SpringApplication.run(StockMarketGameApplication.class, args);
 		System.out.println("HELLO");
 	}
+
 }

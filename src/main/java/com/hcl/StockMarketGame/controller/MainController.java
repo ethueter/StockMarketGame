@@ -6,11 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hcl.StockMarketGame.model.User;
 import com.hcl.StockMarketGame.service.UserService;
@@ -19,7 +15,8 @@ import com.hcl.StockMarketGame.service.UserService;
 public class MainController {
 	@Autowired
 	UserService userService;
-	
+
+	@CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/user")
 	public @ResponseBody List<User> getAll(){
 		User x = new User();
@@ -31,6 +28,7 @@ public class MainController {
     	System.out.println("!! Passed getAll !!");
 		return userService.getAll();
 	}
+	
     /*
     @PostMapping(value="/user")
     public ResponseEntity<String> post(@RequestBody User user){
