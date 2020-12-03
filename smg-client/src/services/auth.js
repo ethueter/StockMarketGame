@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = "localhost:8080/";
 
 const newUser = (email, password) => {
-    return axios.post(API_URL + "create", {
+    return axios.post(API_URL + "newUser", {
         email,
         password
     }).then((response) => {
