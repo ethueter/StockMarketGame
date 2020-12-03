@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Button } from '@material-ui/core';
 
 import LeaderBoard from './Leaderboard';
@@ -7,12 +7,20 @@ import User from '../services/userData';
 
 
 const HomeContainer = () => {
+  const [playerScores, setPlayerScores] = useState([]);
+
 
   const handleClick = async () => {
     let users = await User.getAllUsers();
 
     console.log(users)
   }
+
+  useEffect( async() => {
+    let myScores = await User.getGameScores()
+    setPlayerScores(myScores);
+  }, []);
+
 
     return (
       <Grid

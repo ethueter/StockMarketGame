@@ -13,7 +13,13 @@ const GamePage = () => {
   const [portfolio, setPortfolio] = useState([]);
   const [cash, setCash ] = useState(100000);
   const [portValue, setPortValue] = useState(0);
-  const [mktCall, setMktCall ] = useState()
+  const [mktCall, setMktCall ] = useState();
+  const [gameMode, setGameMode ] = useState(15);
+
+  const [sec, setSec ] = useState();
+  const [gameClock, setGameClock] = useState(gameMode);
+  const [gameOn, setGameOn ] = useState(false)
+
 
   useEffect(async() => {
     let newCall = await Market.getMarketData()
@@ -33,9 +39,37 @@ const GamePage = () => {
   }
 
   const getPortVal = () => {
-    
+    //needs to establish portfolio
+  }
+  const leadingZeros = (num) => {
+    if (num === 60 || num === 0) {
+      return "00";
+    } else if (num < 10) {
+      return "0" + num;
+    } else {
+      return num;
+    }
   }
 
+  const gameTimer = () => {
+
+    if (sec === 0 && display === 0) {
+      endGame();
+    } else if (sec === 0 && gameClock !== 0) {
+      setGameClock(min => min - 1);
+      setSec(59);
+    } else if (sec > 0) {
+      setSec(sec => sec - 1);
+    }
+
+  }
+
+  const endGame = () => {
+    setGameOn(false);
+    //will also make call to send game score to DB
+  }
+
+  useinterval(gameTimer, gameOn ? 1000 : null);
 
     return (
       <div>
@@ -45,6 +79,11 @@ const GamePage = () => {
               Logout
             </Link>
             <Link component={Button} href="/home">Home</Link>
+            <Counter
+              displayTime={gameClock}
+              displaySec={sec}
+              zero={leadingZeros}
+               />
           </ToolBar>
         </AppBar>
         <Button onClick={testingEffect}>Test</Button>

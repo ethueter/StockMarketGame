@@ -13,7 +13,6 @@ const ADV_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY
 const getMarketData = () => {
     return axios.get(ADV_URL)
     .then((response) => response.data)
-    console.log("I am a bloody damn function");
 }
 
 export default { getMarketData };
