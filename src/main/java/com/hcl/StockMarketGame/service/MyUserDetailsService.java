@@ -1,4 +1,4 @@
-package com.hcl.ashwin.tyler.ramiro.StockMarketGame.services;
+package com.hcl.StockMarketGame.service;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

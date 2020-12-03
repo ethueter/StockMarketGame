@@ -1,7 +1,8 @@
-package com.hcl.ashwin.tyler.ramiro.StockMarketGame;
+package com.hcl.StockMarketGame;
 
-import com.hcl.ashwin.tyler.ramiro.StockMarketGame.filters.JwtRequestFilter;
-import com.hcl.ashwin.tyler.ramiro.StockMarketGame.services.MyUserDetailsService;
+import com.hcl.StockMarketGame.filters.JwtRequestFilter;
+import com.hcl.StockMarketGame.service.MyUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,8 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers("/authenticate").permitAll().
-                anyRequest().authenticated()
+                .authorizeRequests().antMatchers("/authenticate").permitAll()
+                .antMatchers("/user").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
+                .anyRequest().authenticated()
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

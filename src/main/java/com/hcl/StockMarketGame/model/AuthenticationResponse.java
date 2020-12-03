@@ -1,4 +1,4 @@
-package com.hcl.ashwin.tyler.ramiro.StockMarketGame.models;
+package com.hcl.StockMarketGame.model;
 
 public class AuthenticationResponse {
 
