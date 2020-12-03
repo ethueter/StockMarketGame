@@ -22,10 +22,11 @@ public class User {// Table to store user data
     private int id;
 	private String username;
     private String password;
-    private int games;
+    private int games=0;
     @CreationTimestamp
     private Timestamp created;
-    private Date last_login_date = new Date();
+    @CreationTimestamp
+    private Timestamp last_login;
     private boolean archived = false;
 	
     public void setUsername(String string) {
@@ -36,6 +37,6 @@ public class User {// Table to store user data
 	}
 	@Override
 	public String toString() {
-		return this.username;
+		return this.username + " has played " + this.games + " games.";
 	}
 }
