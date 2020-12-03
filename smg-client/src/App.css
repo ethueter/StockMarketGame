@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+.SignIn-container {
+  
+  display: flex;
+  justify-content: center
+}
+
+.SignIn-card {
+  max-width: 30pc;
+}
+
+.LoginCard-content {
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.game-mode-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 2px black;
+}
+
+.leaderboard-subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.trading-desk {
+  border: 2px black;
+}
