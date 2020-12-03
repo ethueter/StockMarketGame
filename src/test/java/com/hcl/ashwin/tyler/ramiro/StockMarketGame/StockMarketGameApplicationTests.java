@@ -1,1 +1,1 @@
-class StockMarketGameApplicationTests {
+class StockMarketGameApplicationTests {}
