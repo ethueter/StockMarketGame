@@ -8,7 +8,6 @@ const TradingDesk = ({ stocks, buy, sell, cash, portVal }) => {
     const [numShares, setNumShares] = useState(0);
 
     const handleDeskSelect = async (event) => {
-        console.log("test", event.target.value)
         let targetStock = await displaySharePrice(event.target.value);
         setDeskTarget(targetStock)
     }
@@ -73,7 +72,6 @@ const TradingDesk = ({ stocks, buy, sell, cash, portVal }) => {
               value={numShares}
               onChange={handleNumSharesChange}
               type="number"
-              shrink
             />
           </FormControl>
           <Typography>
@@ -84,7 +82,7 @@ const TradingDesk = ({ stocks, buy, sell, cash, portVal }) => {
               size="large" 
               variant="outlined" 
               color="primary"
-              onClick={buying ? }
+              
               >
               Execute Trade
             </Button>
