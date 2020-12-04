@@ -1,10 +1,9 @@
-import axios from 'axios';
 import authHeader from './authHeader';
 
 
 const API_URL = "http://localhost:8080/";
 
-//Get player's top scores
+//Get single player's top scores
 const getGameScores = async () => {
     const response = await fetch(API_URL + '/games', {
         method: "GET",
@@ -25,12 +24,10 @@ const getLeaderboard = async () => {
         credentials: "same-origin"
     });
     let body = await response.json();
-    console.log(body[0])
     return body[0];
 };
 
 const getAllUsers = async () => {
-    
     const response = await fetch(API_URL + "users", {
         method: "GET",
         mode: "cors",

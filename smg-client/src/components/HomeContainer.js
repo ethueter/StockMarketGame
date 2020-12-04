@@ -18,9 +18,9 @@ const HomeContainer = () => {
     console.log(users)
   }
 
-  useEffect( async() => {
+  useEffect( () => {
     // let myScores = await User.getGameScores();
-    let ldbd = await User.getLeaderboard();
+    let ldbd = User.getLeaderboard();
     // setPlayerScores(myScores);
     setLeaderboard(ldbd);
   }, [setLeaderboard]);

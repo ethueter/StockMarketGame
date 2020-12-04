@@ -1,23 +1,6 @@
 import React from 'react';
-import { Card, CardActions, CardHeader, Typography, CardContent, Divider, Button, Paper, TableContainer, TableHead, TableRow, TableCell, TableBody, Table } from '@material-ui/core';
+import { Card, CardActions, CardHeader, CardContent, Divider, Button, Paper, TableContainer, TableHead, TableRow, TableCell, TableBody, Table } from '@material-ui/core';
 
-
-
-const columns = [
-    {field: 'username', headerName: 'Player'},
-    {field: 'earnings', headerName: 'Earnings'}
-];
-
-const rows = [
-    {username: "Gordon Gecko", earnings: 124682},
-    {username: "Player A", earnings: 12597 },
-    {username: "Player B", earnings: 56879},
-    { username: "Warren Buffet", earnings: 84329},
-    {username: "Tyler H", earnings: 72653},
-    { username: "Ashwin A", earnings: 81467}
-]
-
-const sortRows = rows.sort((a, b) => b.earnings - a.earnings)
 
 const Leaderboard = ({title, subtitle, leaders}) => {
     
