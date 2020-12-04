@@ -1,9 +1,10 @@
-package com.hcl.ashwin.tyler.ramiro.StockMarketGame;
+package com.hcl.StockMarketGame.controller;
 
-import com.hcl.ashwin.tyler.ramiro.StockMarketGame.models.AuthenticationRequest;
-import com.hcl.ashwin.tyler.ramiro.StockMarketGame.models.AuthenticationResponse;
-import com.hcl.ashwin.tyler.ramiro.StockMarketGame.services.MyUserDetailsService;
-import com.hcl.ashwin.tyler.ramiro.StockMarketGame.util.JwtUtil;
+import com.hcl.StockMarketGame.model.AuthenticationRequest;
+import com.hcl.StockMarketGame.model.AuthenticationResponse;
+import com.hcl.StockMarketGame.service.MyUserDetailsService;
+import com.hcl.StockMarketGame.util.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,7 +32,7 @@ public class AuthController {
     public String hello() {
         return "Hello World";
     }
-
+/*
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthencationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 
@@ -47,6 +48,6 @@ public class AuthController {
 
         return ResponseEntity.ok( new AuthenticationResponse((jwt)));
     }
-
+*/
 
 }

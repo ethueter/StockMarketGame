@@ -1,4 +1,4 @@
-package com.hcl.ashwin.tyler.ramiro.StockMarketGame.util;
+package com.hcl.StockMarketGame.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
