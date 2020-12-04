@@ -2,10 +2,10 @@
 
 const API_URL = "http://localhost:8080/";
 
-const newUser = async (email, password) => {
-    let newUser = {email: email, password: password};
+const newUser = async (username, password) => {
+    let newUser = {username: username, password: password};
     console.log(newUser);
-    const response = await fetch(API_URL + 'newuser', {
+    const response = await fetch(API_URL + 'create/' + username, {
         method: 'POST',
         mode: 'cors',
         cache: "no-cache",
@@ -13,21 +13,18 @@ const newUser = async (email, password) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(newUser)
+        body: JSON.stringify(password)
     });
-    let res = await response.json();
-    
-    return res;
+    let body = await response.json();
+    if (body.id) {
+        localStorage.setItem("user", JSON.stringify(body));
+        return true;
+    } else {
+        return false
+    }
 };
 
 const login = async (username, password) => {
-    // return axios.post(API_URL + "authenticate", {email, password})
-    // .then((response) => {
-    //     if(response.data.accessToken) {
-    //         localStorage.setItem("user", JSON.stringify(response.data));
-    //     }
-    //     return response.data;
-    // })
     const response = await fetch(API_URL + 'login/' + username, {
         method: 'GET',
         mode: 'cors',
@@ -44,9 +41,6 @@ const login = async (username, password) => {
         } else {
             return false
         }
-
-    console.log(body.games)
-    
 };
 
 const logout = () => {

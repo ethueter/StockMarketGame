@@ -28,23 +28,6 @@ const SignIn = (props) => {
     const verifyPassword = (event) => {
         if(event.target.value == password) setVerified(true);
     }
-    //These methods were used for initial setup and testing
-
-    // const loginUser = () => {
-    //   let user = {
-    //     username: username,
-    //     password: password
-    //   };
-    //   console.log(user);
-    // }
-
-    // const createUser = () => {
-    //   let newUser = {
-    //     username: username,
-    //     password: password
-    //   };
-    //   console.log(newUser);
-    // }
 
     const loginUser = () => {
         Auth.login(username, password)

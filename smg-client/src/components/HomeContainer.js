@@ -8,6 +8,8 @@ import User from '../services/userData';
 
 const HomeContainer = () => {
   const [playerScores, setPlayerScores] = useState([]);
+  const [leaderboard, setLeaderboard] = useState([{userId: "loading", score: "loading"}]);
+
   const username = JSON.parse(localStorage.getItem("user"));
 
   const handleClick = async () => {
@@ -16,10 +18,12 @@ const HomeContainer = () => {
     console.log(users)
   }
 
-  // useEffect( async() => {
-  //   let myScores = await User.getGameScores()
-  //   setPlayerScores(myScores);
-  // }, []);
+  useEffect( async() => {
+    // let myScores = await User.getGameScores();
+    let ldbd = await User.getLeaderboard();
+    // setPlayerScores(myScores);
+    setLeaderboard(ldbd);
+  }, [setLeaderboard]);
 
 
     return (
@@ -35,10 +39,10 @@ const HomeContainer = () => {
               Just like on the real Wall St, whoever has the most money at the end wins!!
           </p>
           <Button onClick={handleClick}>Get All Users</Button>
-            <LeaderBoard title="My Top Earnings" subtitle="Date" />
+            <LeaderBoard title="My Top Earnings" subtitle="Date" leaders={leaderboard}/>
         </Grid>
         <Grid item sm={4}>
-            <LeaderBoard title="Global Leaderboard" subtitle="Player name"/>
+            <LeaderBoard title="Global Leaderboard" subtitle="Player name" leaders={leaderboard}/>
         </Grid>
         
       </Grid>

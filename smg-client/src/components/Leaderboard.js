@@ -19,7 +19,7 @@ const rows = [
 
 const sortRows = rows.sort((a, b) => b.earnings - a.earnings)
 
-const Leaderboard = ({title, subtitle}) => {
+const Leaderboard = ({title, subtitle, leaders}) => {
     
     return (
       <Card variant="outlined">
@@ -41,12 +41,12 @@ const Leaderboard = ({title, subtitle}) => {
               </TableRow>
             </TableHead>
             <TableBody>
-                {sortRows.map(row => (
-                <TableRow key={row.username}>
+                {leaders.map(row => (
+                <TableRow key={row.timestamp}>
                   <TableCell component="th" scope="row">
-                    {row.username}
+                    {row.userId}
                   </TableCell>
-                  <TableCell align="right">{row.earnings}</TableCell>
+                  <TableCell align="right">{row.score}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

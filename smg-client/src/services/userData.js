@@ -17,8 +17,16 @@ const getGameScores = async () => {
 };
 
 //Get all top scores
-const getLeaderboard = () => {
-    
+const getLeaderboard = async () => {
+    const response = await fetch(API_URL + "leaderboard", {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin"
+    });
+    let body = await response.json();
+    console.log(body[0])
+    return body[0];
 };
 
 const getAllUsers = async () => {
