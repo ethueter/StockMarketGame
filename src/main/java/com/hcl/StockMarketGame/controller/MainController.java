@@ -32,15 +32,46 @@ public class MainController {
 	GameService gameService;
 	
 
-	public class Login {
-		public String username;
-		public String password;
+	private class Login {
+		String username;
+		String password;
+		public String getUsername() {
+			return username;
+		}
+		public void setUsername(String username) {
+			this.username = username;
+		}
+		public String getPassword() {
+			return password;
+		}
+		public void setPassword(String password) {
+			this.password = password;
+		}
+
 	}
 	
-	public class LogGame {
-		public String username;
-		public int score;
-		public String gameMode;
+	private class LogGame {
+		String username;
+		int score;
+		String gameMode;
+		public String getUsername() {
+			return username;
+		}
+		public void setUsername(String username) {
+			this.username = username;
+		}
+		public int getScore() {
+			return score;
+		}
+		public void setScore(int score) {
+			this.score = score;
+		}
+		public String getGameMode() {
+			return gameMode;
+		}
+		public void setGameMode(String gameMode) {
+			this.gameMode = gameMode;
+		}
 	}
 	
     @GetMapping(value="/login")
@@ -48,7 +79,7 @@ public class MainController {
 
     	User user = new User();
     	try{
-    		user = userService.get(login.username);
+    		user = userService.get(login.getUsername());
     	}catch(UsernameNotFoundException e) {
     		e.printStackTrace();
     	}
@@ -71,8 +102,8 @@ public class MainController {
 
 //    	}else{
     		User x = new User();
-    		x.setUsername(login.username);
-    		x.setPassword(login.password);
+    		x.setUsername(login.getUsername());
+    		x.setPassword(login.getPassword());
     		userService.post(x);
 
     		return true;
@@ -87,8 +118,8 @@ public class MainController {
     
     @GetMapping(value="/newgame")
     public void newGame(@RequestBody LogGame lg) {
-    	Gamemode gm = Enum.valueOf(Gamemode.class, lg.gameMode);
-    	gameService.post(new Game(lg.username,lg.score,gm));
+    	Gamemode gm = Enum.valueOf(Gamemode.class, lg.getGameMode());
+    	gameService.post(new Game(lg.getUsername(),lg.getScore(),gm));
     	userService.putGame(lg.username);
     }
 
