@@ -1,6 +1,7 @@
 package com.hcl.StockMarketGame.service;
 
 import com.hcl.StockMarketGame.model.Game;
+import com.hcl.StockMarketGame.model.Gamemode;
 import com.hcl.StockMarketGame.repository.GameRepository;
 
 import java.util.List;
@@ -25,6 +26,10 @@ public class GameService {
     
     public Game get(int id) { //Read
     	return gameRepository.findById(id).get();
+    }
+    
+    public List<Game> get(Gamemode x){
+    	return gameRepository.findByGameMode(x);
     }
     
     public List<Game> getAll(){
