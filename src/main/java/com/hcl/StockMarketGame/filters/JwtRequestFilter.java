@@ -1,7 +1,8 @@
-package com.hcl.ashwin.tyler.ramiro.StockMarketGame.filters;
+package com.hcl.StockMarketGame.filters;
 
-import com.hcl.ashwin.tyler.ramiro.StockMarketGame.services.MyUserDetailsService;
-import com.hcl.ashwin.tyler.ramiro.StockMarketGame.util.JwtUtil;
+import com.hcl.StockMarketGame.service.MyUserDetailsService;
+import com.hcl.StockMarketGame.util.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

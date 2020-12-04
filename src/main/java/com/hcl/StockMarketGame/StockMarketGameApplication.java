@@ -6,11 +6,19 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.annotation.ComponentScan;
 
 
-@ComponentScan({"com.hcl.StockMarketGame.repository","com.hcl.StockMarketGame.controller","com.hcl.StockMarketGame.service"})
+import com.hcl.StockMarketGame.controller.AuthController;
+import com.hcl.StockMarketGame.service.UserService;
+
+import org.springframework.context.annotation.FilterType;
+/*
+@ComponentScan({"com.hcl.StockMarketGame.repository",
+				"com.hcl.StockMarketGame.controller",
+				"com.hcl.StockMarketGame.service"})
+				*/
+@ComponentScan(basePackages = { "com.hcl.StockMarketGame" }, excludeFilters = { @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = { AuthController.class, SecurityConfig.class}) })
+
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class/*, DataSourceAutoConfiguration.class */})
-// Encountered Application Fail error when DataSourceAutoConfiguration not excluded
-// --> Investigate other solutions and purpose of DataSource
 
 public class StockMarketGameApplication {
 	public static void main(String[] args) {
@@ -19,3 +27,4 @@ public class StockMarketGameApplication {
 	}
 
 }
+

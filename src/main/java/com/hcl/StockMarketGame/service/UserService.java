@@ -6,6 +6,7 @@ import com.hcl.StockMarketGame.repository.UserRepository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,27 +16,48 @@ public class UserService {
 	@Autowired
 	public UserRepository userRepository;
 
-    public boolean existsbyId(int id) {
-    	return userRepository.existsById(id);
-    }
-    
-    public void post(User user) { //Create
+    //Create
+    public void post(User user) { 
     	userRepository.save(user);
     }
     
-    public User get(int id) { //Read
+    //Read
+    public boolean exists(int id) {
+    	return userRepository.existsById(id);
+    }
+    
+    public boolean exists(String username) {
+    	try {
+    		userRepository.findByUsername(username);
+    	} catch(UsernameNotFoundException e) {
+    		e.printStackTrace();
+    		return false;
+    	} return true;
+    }
+    
+    public User get(int id) {
     	return userRepository.findById(id).get();
+    }
+    
+    public User get(String username) {
+    	if(userRepository.findByUsername(username)!=null) {
+    		return userRepository.findByUsername(username).get(0);
+    	}else {
+    		throw new UsernameNotFoundException(username);
+    	}
     }
     
     public List<User> getAll(){
     	return userRepository.findAll();
     }
     
-    public void put(User item) { //Update
+    //Update
+    public void put(User item) {
     	userRepository.save(item);
     }
     
-    public void delete(int id) { //Delete
+    //Delete
+    public void delete(int id) { 
     	userRepository.deleteById(id);
     }
     

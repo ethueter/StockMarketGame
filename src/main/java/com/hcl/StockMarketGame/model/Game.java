@@ -20,11 +20,11 @@ import java.sql.Timestamp;
 public class Game {// Table to store data on every game played
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int gameId;
+    private int Id;
     private int userId;
     @CreationTimestamp
-    private Timestamp gameTimestamp;
-    private int gamescore;
+    private Timestamp timestamp;
+    private int score;
     @Enumerated(EnumType.STRING)
     private Gamemode gameMode;
 }
