@@ -12,13 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hcl.StockMarketGame.model.Game;
 import com.hcl.StockMarketGame.model.Gamemode;
@@ -26,8 +20,10 @@ import com.hcl.StockMarketGame.model.User;
 import com.hcl.StockMarketGame.service.GameService;
 import com.hcl.StockMarketGame.service.UserService;
 
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
+
 public class MainController {
 	@Autowired
 	UserService userService;
@@ -35,6 +31,7 @@ public class MainController {
 	@Autowired
 	GameService gameService;
 	
+
 	public class Login {
 		public String username;
 		public String password;
@@ -48,6 +45,7 @@ public class MainController {
 	
     @GetMapping(value="/login")
     public User getUser(@RequestBody Login login) {
+
     	User user = new User();
     	try{
     		user = userService.get(login.username);
@@ -57,22 +55,28 @@ public class MainController {
     	System.out.println(user);
     	return user;
     }
+
     
     @GetMapping(value="/users")
 	public List<User> getAll(){
+
 		return userService.getAll();
 	}
-    
+
     @PostMapping(value="/create/{username}")
+
     public boolean newUser(@RequestBody Login login) {
 //    	if(userService.exists(login.username)) {
 //    		return false;
+
 //    	}else{
     		User x = new User();
     		x.setUsername(login.username);
     		x.setPassword(login.password);
     		userService.post(x);
+
     		return true;
+
 //    	}
     }
     
@@ -87,7 +91,7 @@ public class MainController {
     	gameService.post(new Game(lg.username,lg.score,gm));
     	userService.putGame(lg.username);
     }
-    
+
     @GetMapping(value="/leaderboard")
     public List<List<Game>> leaderboard(){
     	List<List<Game>> sortedGames = new ArrayList<List<Game>>();
