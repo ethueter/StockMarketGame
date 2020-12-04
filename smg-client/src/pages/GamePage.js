@@ -8,7 +8,7 @@ import TradingFloor from '../components/TradingFloor';
 import stocks from '../testData/stocks';
 import Market from '../services/marketData';
 import Counter from '../components/Counter';
-
+import Auth from '../services/auth';
 
 const GamePage = () => {
   const [portfolio, setPortfolio] = useState([]);
@@ -84,7 +84,7 @@ const GamePage = () => {
       <div>
         <AppBar color="inherit" position="relative">
           <ToolBar className="toolbar">
-            <Link component={Button} href="/">
+            <Link component={Button} onClick={Auth.logout} href="/">
               Logout
             </Link>
             <Link component={Button} href="/home">

@@ -49,6 +49,7 @@ const SignIn = (props) => {
     const loginUser = () => {
         Auth.login(username, password)
         .then(() => {
+          
             props.history.push("/home");
         });
     };

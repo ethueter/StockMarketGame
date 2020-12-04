@@ -25,7 +25,7 @@ public class MainController {
 	@Autowired
 	UserService userService;
 
-	//@CrossOrigin(origins = "http://localhost:3000")
+	@CrossOrigin(origins = "http://localhost:3000")
     @GetMapping(value="/login/{username}")
     public @ResponseBody User getUser(@PathVariable String username) {
     	User user = new User();

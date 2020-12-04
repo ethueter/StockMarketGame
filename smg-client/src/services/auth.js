@@ -20,7 +20,7 @@ const newUser = async (email, password) => {
     return res;
 };
 
-const login = async (email, password) => {
+const login = async (username, password) => {
     // return axios.post(API_URL + "authenticate", {email, password})
     // .then((response) => {
     //     if(response.data.accessToken) {
@@ -28,25 +28,24 @@ const login = async (email, password) => {
     //     }
     //     return response.data;
     // })
-    const response = await fetch(API_URL + 'user', {
-        method: 'POST',
+    const response = await fetch(API_URL + 'login/' + username, {
+        method: 'GET',
         mode: 'cors',
         cache: "no-cache",
         credentials: "same-origin",
         headers: {
             "Content-Type": "application/json"
-        },
-        body: JSON.stringify(email, password)
+        }
     });
     let body = await response.json();
-        if (body.data.accessToken) {
-            localStorage.setItem("user", JSON.stringify(body.data));
+        if (body.id) {
+            localStorage.setItem("user", JSON.stringify(body));
             return true;
         } else {
             return false
         }
 
-    
+    console.log(body.games)
     
 };
 

@@ -8,7 +8,7 @@ import User from '../services/userData';
 
 const HomeContainer = () => {
   const [playerScores, setPlayerScores] = useState([]);
-
+  const username = JSON.parse(localStorage.getItem("user"));
 
   const handleClick = async () => {
     let users = await User.getAllUsers();
@@ -16,10 +16,10 @@ const HomeContainer = () => {
     console.log(users)
   }
 
-  useEffect( async() => {
-    let myScores = await User.getGameScores()
-    setPlayerScores(myScores);
-  }, []);
+  // useEffect( async() => {
+  //   let myScores = await User.getGameScores()
+  //   setPlayerScores(myScores);
+  // }, []);
 
 
     return (
@@ -28,7 +28,8 @@ const HomeContainer = () => {
         direction="row"
       >
         <Grid item  sm={8}>
-          <h1>Welcome "player name"!</h1>
+          <h1>Welcome {username.username}!</h1>
+          <h3>Games Played: {username.games}</h3>
           <p>Do you have what it takes to master Wall St? Test your skills against the worlds best in 3 different game lengths.
               We will spot you $100K in virtual currency then you can buy and sell as much as you can for your selected game length. 
               Just like on the real Wall St, whoever has the most money at the end wins!!
