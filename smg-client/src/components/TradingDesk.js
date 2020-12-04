@@ -57,6 +57,7 @@ const TradingDesk = ({ stocks, buy, sell, cash, portVal }) => {
               value={deskTarget.syb}
               onChange={handleDeskSelect}
             >
+              <MenuItem value=''></MenuItem>
               {stocks.map(stock => (
                 <MenuItem value={stock.syb}>{stock.syb}</MenuItem>
               ))}

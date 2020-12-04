@@ -29,7 +29,11 @@ const GamePage = () => {
 
   const testingEffect = () => {
     // console.log(mktCall["Meta Data"]["2. Symbol"]);
-    setGameOn(true);
+    if(gameOn) {
+      setGameOn(false);
+    } else {
+      setGameOn(true)
+    }
   }
 
   const buyStock = (stk, shares) => {
@@ -45,7 +49,6 @@ const GamePage = () => {
   }
 
   const handleGameMode = (event) => {
-    console.log(event.target.value);
     setGameMode(event.target.value);
     setGameClock(event.target.value);
   }
