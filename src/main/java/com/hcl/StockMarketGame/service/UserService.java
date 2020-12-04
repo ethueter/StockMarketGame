@@ -56,9 +56,13 @@ public class UserService {
     	userRepository.save(item);
     }
     
+    public void putGame(String username) {
+    	userRepository.addGame(username);
+    }
+    
     //Delete
     public void delete(int id) { 
-    	userRepository.deleteById(id);
+    	userRepository.archiveById(id);
     }
     
 }
