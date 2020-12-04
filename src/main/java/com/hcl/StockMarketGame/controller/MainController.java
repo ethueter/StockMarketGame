@@ -17,7 +17,7 @@ import com.hcl.StockMarketGame.model.Gamemode;
 import com.hcl.StockMarketGame.model.User;
 import com.hcl.StockMarketGame.service.GameService;
 import com.hcl.StockMarketGame.service.UserService;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @Controller
 public class MainController {
 	@Autowired
@@ -26,7 +26,7 @@ public class MainController {
 	@Autowired
 	GameService gameService;
 	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 
     @GetMapping(value="/login/{username}")
     public @ResponseBody User getUser(@PathVariable String username) {
@@ -39,12 +39,12 @@ public class MainController {
     	System.out.println(user);
     	return user;
     }
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping(value="/users")
 	public @ResponseBody List<User> getAll(){
 		return userService.getAll();
 	}
-	@CrossOrigin(origins = "http://localhost:3000")
+
     @PostMapping(value="/create/{username}")
     public @ResponseBody User newUser(@PathVariable String username,@RequestBody String password) {
 //    	if(userService.exists(username)) {
@@ -63,7 +63,7 @@ public class MainController {
     	Gamemode gm = Enum.valueOf(Gamemode.class, gameMode);
     	gameService.post(new Game(userId,score,gm));
     }
-	@CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping(value="/leaderboard")
     public @ResponseBody List<List<Game>> leaderboard(){
     	List<List<Game>> lbd = new ArrayList<List<Game>>();
