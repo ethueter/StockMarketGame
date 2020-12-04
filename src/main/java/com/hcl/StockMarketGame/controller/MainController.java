@@ -28,7 +28,7 @@ public class MainController {
     	System.out.println("!! Passed getAll !!");
 		return userService.getAll();
 	}
-	
+
     /*
     @PostMapping(value="/user")
     public ResponseEntity<String> post(@RequestBody User user){
