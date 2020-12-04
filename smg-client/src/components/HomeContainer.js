@@ -1,11 +1,26 @@
-import React from 'react';
-import { Grid } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Grid, Button } from '@material-ui/core';
 
 import LeaderBoard from './Leaderboard';
+import User from '../services/userData';
 
 
 
 const HomeContainer = () => {
+  const [playerScores, setPlayerScores] = useState([]);
+
+
+  const handleClick = async () => {
+    let users = await User.getAllUsers();
+
+    console.log(users)
+  }
+
+  useEffect( async() => {
+    let myScores = await User.getGameScores()
+    setPlayerScores(myScores);
+  }, []);
+
 
     return (
       <Grid
@@ -18,6 +33,7 @@ const HomeContainer = () => {
               We will spot you $100K in virtual currency then you can buy and sell as much as you can for your selected game length. 
               Just like on the real Wall St, whoever has the most money at the end wins!!
           </p>
+          <Button onClick={handleClick}>Get All Users</Button>
             <LeaderBoard title="My Top Earnings" subtitle="Date" />
         </Grid>
         <Grid item sm={4}>
