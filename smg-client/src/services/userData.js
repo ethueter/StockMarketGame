@@ -39,5 +39,28 @@ const getAllUsers = async () => {
     return body;
 }
 
+<<<<<<< Updated upstream
 
 export default { getGameScores, getLeaderboard, getAllUsers };
+=======
+const postNewGame = async (gameMode, score) => {
+    let newGame = {
+        username: localStorage.getItem("user").username,
+        score: score,
+        gameMode: gameMode
+    };
+    const response = await fetch(API_URL, +"newgame", {
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      body: JSON.stringify(newGame)
+    });
+    let body = await response.json();
+
+    return body;
+}
+
+
+export default { getGameScores, getLeaderboard, getAllUsers, postNewGame };
+>>>>>>> Stashed changes

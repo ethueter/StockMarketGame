@@ -18,9 +18,15 @@ const HomeContainer = () => {
     console.log(users)
   }
 
+<<<<<<< Updated upstream
   useEffect( () => {
     // let myScores = await User.getGameScores();
     let ldbd = User.getLeaderboard();
+=======
+  useEffect( async () => {
+    // let myScores = await User.getGameScores();
+    let ldbd = await User.getLeaderboard();
+>>>>>>> Stashed changes
     // setPlayerScores(myScores);
     setLeaderboard(ldbd);
   }, [setLeaderboard]);

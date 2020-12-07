@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { useState, useEffect } from 'react';
 import { AppBar, Button, Link, Grid, InputLabel, Select, MenuItem } from '@material-ui/core';
 import ToolBar from '@material-ui/core/Toolbar';
@@ -11,6 +12,15 @@ import Counter from '../components/Counter';
 import Auth from '../services/auth';
 
 const GamePage = () => {
+=======
+import React from 'react';
+
+<<<<<<< Updated upstream
+
+const GamePage = () => {
+=======
+const GamePage = () => {
+>>>>>>> Stashed changes
   const [portfolio, setPortfolio] = useState([]);
   const [cash, setCash ] = useState(100000);
   const [portValue, setPortValue] = useState(0);
@@ -29,7 +39,15 @@ const GamePage = () => {
 
   const testingEffect = () => {
     // console.log(mktCall["Meta Data"]["2. Symbol"]);
+<<<<<<< Updated upstream
     setGameOn(true);
+=======
+    if(gameOn) {
+      setGameOn(false);
+    } else {
+      setGameOn(true)
+    }
+>>>>>>> Stashed changes
   }
 
   const buyStock = (stk, shares) => {
@@ -43,6 +61,43 @@ const GamePage = () => {
   const getPortVal = () => {
     //needs to establish portfolio
   }
+<<<<<<< Updated upstream
+=======
+
+  const handleGameMode = (event) => {
+    setGameMode(event.target.value);
+    setGameClock(event.target.value);
+  }
+
+  const leadingZeros = (num) => {
+    if (num === 60 || num === 0) {
+      return "00";
+    } else if (num < 10) {
+      return "0" + num;
+    } else {
+      return num;
+    }
+  }
+
+  const gameTimer = () => {
+
+    if (sec === 0 && gameClock === 0) {
+      endGame();
+    } else if (sec === 0 && gameClock !== 0) {
+      setGameClock(min => min - 1);
+      setSec(59);
+    } else if (sec > 0) {
+      setSec(sec => sec - 1);
+    }
+
+  }
+
+  const endGame = () => {
+    setGameOn(false);
+    //will also make call to send game score to DB
+  }
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
   const handleGameMode = (event) => {
     console.log(event.target.value);

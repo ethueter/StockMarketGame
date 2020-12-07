@@ -16,8 +16,17 @@ import java.util.Date;
 @Entity
 @Table(name="users")
 public class User {// Table to store user data
+<<<<<<< Updated upstream
 	// com.hackerrank.orm.enums.ItemStatus;
     @Id
+=======
+    public User(){}
+    public User(String username, String password){
+    	this.username=username;
+    	this.password=password;
+    }
+	@Id
+>>>>>>> Stashed changes
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	private String username;
@@ -31,6 +40,9 @@ public class User {// Table to store user data
 	
     public void setUsername(String string) {
 		this.username=string;
+	}
+	public String getPassword() {
+		return password;
 	}
 	public void setPassword(String string) {
 		this.password=string;
