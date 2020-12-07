@@ -126,7 +126,7 @@ const GamePage = () => {
             </span>
           </ToolBar>
         </AppBar>
-        <Button onClick={testingEffect}>Test</Button>
+        <Button onClick={testingEffect}>Play</Button>
         <Button onClick={submitScore}>Submit Score</Button>
         <Grid container>
           <Grid item md={4}>
