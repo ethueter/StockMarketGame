@@ -23,7 +23,4 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	@Query(value="UPDATE users SET archived=1 WHERE id=?1", nativeQuery=true)
 	void archiveById(int id);
 	
-	//@Query(value="EXISTS(SELECT * FROM users WHERE username=?1)", nativeQuery=true)
-	//boolean existsByName(String username);
-	
 }
