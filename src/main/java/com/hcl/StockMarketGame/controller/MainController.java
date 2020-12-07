@@ -23,7 +23,6 @@ import com.hcl.StockMarketGame.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-
 public class MainController {
 	@Autowired
 	UserService userService;
@@ -31,8 +30,6 @@ public class MainController {
 	@Autowired
 	GameService gameService;
 	
-
-
 	private static class Login {
 		String username;
 		String password;
@@ -83,6 +80,7 @@ public class MainController {
     		return new User();
     	}
     	if(login.getPassword().equals(user.getPassword())) {
+    		userService.putLogin(user.getUsername());
     		return user;
     	}else {
     		return new User();

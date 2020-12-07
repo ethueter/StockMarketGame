@@ -22,5 +22,9 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	@Modifying
 	@Query(value="UPDATE users SET archived=1 WHERE id=?1", nativeQuery=true)
 	void archiveById(int id);
+
+	@Modifying
+	@Query(value="UPDATE users SET last_login=NOW() WHERE username=?", nativeQuery=true)
+	void updateLastLogin(String username);
 	
 }

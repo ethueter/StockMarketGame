@@ -59,6 +59,10 @@ public class UserService {
     	userRepository.addGame(username);
     }
     
+	public void putLogin(String username) {
+		userRepository.updateLastLogin(username);
+	}
+    
     //Delete
     public void delete(int id) { 
     	userRepository.archiveById(id);
