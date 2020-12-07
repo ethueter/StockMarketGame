@@ -16,7 +16,6 @@ import java.util.Date;
 @Entity
 @Table(name="users")
 public class User {// Table to store user data
-	// com.hackerrank.orm.enums.ItemStatus;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,7 +27,9 @@ public class User {// Table to store user data
     @CreationTimestamp
     private Timestamp last_login;
     private boolean archived = false;
-	
+	public String getUsername() {
+		return username;
+	}
     public void setUsername(String string) {
 		this.username=string;
 	}

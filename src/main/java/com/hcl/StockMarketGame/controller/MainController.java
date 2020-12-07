@@ -33,8 +33,7 @@ public class MainController {
 	
 
 
-	public static class Login {
-
+	private static class Login {
 		String username;
 		String password;
 		public String getUsername() {
@@ -49,7 +48,6 @@ public class MainController {
 		public void setPassword(String password) {
 			this.password = password;
 		}
-
 	}
 	
 	private static class LogGame {
@@ -97,10 +95,8 @@ public class MainController {
 	}
 
     @PostMapping(value="/create")
-
-
     public ResponseEntity<String> newUser(@RequestBody Login login) {
-    	if(!userService.exists(login.username)) {
+    	if(userService.exists(login.username)) {
     		return new ResponseEntity<String>(HttpStatus.BAD_REQUEST); //400
     	}else{
     		User x = new User();
