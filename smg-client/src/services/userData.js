@@ -39,10 +39,6 @@ const getAllUsers = async () => {
     return body;
 }
 
-<<<<<<< Updated upstream
-
-export default { getGameScores, getLeaderboard, getAllUsers };
-=======
 const postNewGame = async (gameMode, score) => {
     let newGame = {
         username: localStorage.getItem("user").username,
@@ -63,4 +59,3 @@ const postNewGame = async (gameMode, score) => {
 
 
 export default { getGameScores, getLeaderboard, getAllUsers, postNewGame };
->>>>>>> Stashed changes

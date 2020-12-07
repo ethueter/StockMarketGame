@@ -5,13 +5,6 @@ import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader';
 import TextField from '@material-ui/core/TextField';
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-const SignIn = () => {
-    
-=======
->>>>>>> Stashed changes
 import Auth from '../services/auth';
 
 
@@ -24,17 +17,10 @@ const SignIn = (props) => {
 
     const handleChange = (event) => {
         if (event.target.id == "username") {
-<<<<<<< Updated upstream
-            console.log(event.target.value)
-            setUsername(event.target.value);
-        } else if (event.target.id == "password") {
-            console.log(event.target.value);
-=======
             
             setUsername(event.target.value);
         } else if (event.target.id == "password") {
             
->>>>>>> Stashed changes
             setPassword(event.target.value);
         }
     }
@@ -57,10 +43,6 @@ const SignIn = (props) => {
                 props.history.push("/home");
             });
     };
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
     return (
       <div className="SignIn-container">
