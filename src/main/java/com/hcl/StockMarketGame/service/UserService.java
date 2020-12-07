@@ -28,8 +28,9 @@ public class UserService {
     
     public boolean exists(String username) {
     	try {
-    		userRepository.findByUsername(username).get(0);
-    	} catch(IndexOutOfBoundsException e) {
+    		userRepository.findByUsername(username);
+    	} catch(UsernameNotFoundException e) {
+    		e.printStackTrace();
     		return false;
     	} return true;
     }
@@ -39,9 +40,9 @@ public class UserService {
     }
     
     public User get(String username) {
-    	try {
+    	if(userRepository.findByUsername(username)!=null) {
     		return userRepository.findByUsername(username).get(0);
-    	}catch(IndexOutOfBoundsException e) {
+    	}else {
     		throw new UsernameNotFoundException(username);
     	}
     }
