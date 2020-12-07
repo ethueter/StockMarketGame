@@ -24,7 +24,7 @@ const getLeaderboard = async () => {
         credentials: "same-origin"
     });
     let body = await response.json();
-    return body[0];
+    return body;
 };
 
 const getAllUsers = async () => {
@@ -39,5 +39,36 @@ const getAllUsers = async () => {
     return body;
 }
 
+const postNewScore = async (gameMode, score) => {
+    let mode;
+    if( gameMode === 15) {
+        mode = "FIFTEEN";
+    } else if ( gameMode === "30") {
+        mode = "THIRTY";
+    } else {
+        mode = "SIXTY";
+    };
 
-export default { getGameScores, getLeaderboard, getAllUsers };
+    let newGame = {
+        username: JSON.parse(localStorage.getItem("user")).username,
+        score: score,
+        gameMode: mode
+    };
+    console.log('new game', newGame)
+    const response = await fetch(API_URL + "newgame", {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newGame)
+    })
+    console.log('response', response.status);
+    let res = await response.status;
+    return res;
+}
+
+
+export default { getGameScores, getLeaderboard, getAllUsers, postNewScore };

@@ -93,17 +93,17 @@ public class MainController {
 	public List<User> getAll(){
 		return userService.getAll();
 	}
-
+	@CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(value="/create")
-    public ResponseEntity<String> newUser(@RequestBody Login login) {
+    public ResponseEntity<?> newUser(@RequestBody Login login) {
     	if(userService.exists(login.username)) {
-    		return new ResponseEntity<String>(HttpStatus.BAD_REQUEST); //400
+    		return  new ResponseEntity<String>(HttpStatus.BAD_REQUEST); //400
     	}else{
     		User x = new User();
     		x.setUsername(login.getUsername());
     		x.setPassword(login.getPassword());
     		userService.post(x);
-    		return new ResponseEntity<String>(HttpStatus.CREATED); //201
+    		return  ResponseEntity.ok(x); //200
     	}
     }
     
@@ -113,10 +113,11 @@ public class MainController {
     }
     
     @PostMapping(value="/newgame")
-    public void newGame(@RequestBody LogGame lg) {
+    public ResponseEntity<?> newGame(@RequestBody LogGame lg) {
     	Gamemode gm = Enum.valueOf(Gamemode.class, lg.getGameMode());
     	gameService.post(new Game(lg.getUsername(),lg.getScore(),gm));
     	userService.putGame(lg.username);
+    	return new ResponseEntity<String>(HttpStatus.CREATED);
     }
 
     @GetMapping(value="/leaderboard")

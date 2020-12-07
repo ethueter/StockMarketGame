@@ -8,7 +8,7 @@ import User from '../services/userData';
 
 const HomeContainer = () => {
   const [playerScores, setPlayerScores] = useState([]);
-  const [leaderboard, setLeaderboard] = useState([{userId: "loading", score: "loading"}]);
+  const [leaderboard, setLeaderboard] = useState([[{userId: "loading", score: "loading", timestamp: "loading"}]]);
 
   const username = JSON.parse(localStorage.getItem("user"));
 
@@ -18,9 +18,9 @@ const HomeContainer = () => {
     console.log(users)
   }
 
-  useEffect( () => {
+  useEffect( async () => {
     // let myScores = await User.getGameScores();
-    let ldbd = User.getLeaderboard();
+    let ldbd = await User.getLeaderboard();
     // setPlayerScores(myScores);
     setLeaderboard(ldbd);
   }, [setLeaderboard]);

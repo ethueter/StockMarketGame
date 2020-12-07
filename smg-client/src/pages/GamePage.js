@@ -9,6 +9,7 @@ import stocks from '../testData/stocks';
 import Market from '../services/marketData';
 import Counter from '../components/Counter';
 import Auth from '../services/auth';
+import Game from '../services/userData';
 
 const GamePage = () => {
   const [portfolio, setPortfolio] = useState([]);
@@ -44,8 +45,23 @@ const GamePage = () => {
     //needs to establish portfolio
   }
 
+  //Simulated game scores
+  const submitScore = () => {
+    let num = Math.floor(Math.random() * 1000);
+    Game.postNewScore(gameMode, num)
+    .then((res) => {
+      if(res === 201) {
+        alert("Great Job. Did you make the LeaderBord?")
+        let user = JSON.parse(localStorage.getItem("user"));
+        user.games++
+        localStorage.setItem("user", JSON.stringify(user));
+      } else {
+        alert("Game Score not recored try again.");
+      }
+    })
+  }
+
   const handleGameMode = (event) => {
-    console.log(event.target.value);
     setGameMode(event.target.value);
     setGameClock(event.target.value);
   }
@@ -111,6 +127,7 @@ const GamePage = () => {
           </ToolBar>
         </AppBar>
         <Button onClick={testingEffect}>Test</Button>
+        <Button onClick={submitScore}>Submit Score</Button>
         <Grid container>
           <Grid item md={4}>
             <TradingDesk

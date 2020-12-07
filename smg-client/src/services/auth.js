@@ -5,7 +5,7 @@ const API_URL = "http://localhost:8080/";
 const newUser = async (username, password) => {
     let newUser = {username: username, password: password};
     console.log(newUser);
-    const response = await fetch(API_URL + 'create/' + username, {
+    const response = await fetch(API_URL + 'create/', {
         method: 'POST',
         mode: 'cors',
         cache: "no-cache",
@@ -13,15 +13,19 @@ const newUser = async (username, password) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(password)
+        body: JSON.stringify(newUser)
     });
-    let body = await response.json();
-    if (body.id) {
+    
+    console.log(response.status)
+    if(response.status === 200) {
+        let body = await response.json();
         localStorage.setItem("user", JSON.stringify(body));
         return true;
     } else {
-        return false
+        alert("User Already Exists")
+        return false;
     }
+   
 };
 
 const login = async (username, password) => {
@@ -30,7 +34,7 @@ const login = async (username, password) => {
         password: password
     };
     const response = await fetch(API_URL + 'login', {
-        method: 'GET',
+        method: 'POST',
         mode: 'cors',
         cache: "no-cache",
         credentials: "same-origin",

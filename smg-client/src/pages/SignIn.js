@@ -16,17 +16,15 @@ const SignIn = (props) => {
     const [ verified, setVerified ] = useState(false)
 
     const handleChange = (event) => {
-        if (event.target.id == "username") {
-            console.log(event.target.value)
+        if (event.target.id === "username") {
             setUsername(event.target.value);
-        } else if (event.target.id == "password") {
-            console.log(event.target.value);
+        } else if (event.target.id === "password") {
             setPassword(event.target.value);
         }
     }
 
     const verifyPassword = (event) => {
-        if(event.target.value == password) setVerified(true);
+        if(event.target.value === password) setVerified(true);
     }
 
     const loginUser = () => {
@@ -39,8 +37,8 @@ const SignIn = (props) => {
 
     const createUser = () => {
         Auth.newUser(username, password)
-            .then(() => {
-                props.history.push("/home");
+            .then((res) => {
+              if (res) props.history.push("/home"); 
             });
     };
 
