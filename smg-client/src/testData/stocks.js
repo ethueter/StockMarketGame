@@ -1,8 +1,11 @@
 import React from 'react';
 
 const stocks = [
+<<<<<<< Updated upstream
+=======
     { syb: "", name: "", price1: 0, price2: 0, price3: 0, price4: 0, price5: 0 },
 
+>>>>>>> Stashed changes
     {syb: "XOM" , name: "ExxonMobile" , price1: 38.41,price2: 38.50, price3: 38.98, price4: 39.04, price5: 39.70},
     {syb: "TSLA", name: "Tesla", price1: 478.82,price2: 479.15, price3: 481.02, price4: 479.62, price5: 479.58},
     {syb: "AMZN", name: "Amazoncom Inc", price1: 3220.08,price2: 3223.46, price3: 3225.12, price4: 3226.73, price5: 3218.96},

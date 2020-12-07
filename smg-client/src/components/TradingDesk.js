@@ -57,7 +57,10 @@ const TradingDesk = ({ stocks, buy, sell, cash, portVal }) => {
               value={deskTarget.syb}
               onChange={handleDeskSelect}
             >
+<<<<<<< Updated upstream
+=======
               <MenuItem value=''></MenuItem>
+>>>>>>> Stashed changes
               {stocks.map(stock => (
                 <MenuItem value={stock.syb}>{stock.syb}</MenuItem>
               ))}
