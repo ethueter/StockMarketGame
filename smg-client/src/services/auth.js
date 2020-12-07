@@ -25,14 +25,19 @@ const newUser = async (username, password) => {
 };
 
 const login = async (username, password) => {
-    const response = await fetch(API_URL + 'login/' + username, {
+    let user = {
+        username: username,
+        password: password
+    };
+    const response = await fetch(API_URL + 'login', {
         method: 'GET',
         mode: 'cors',
         cache: "no-cache",
         credentials: "same-origin",
         headers: {
             "Content-Type": "application/json"
-        }
+        },
+        body: JSON.stringify(user)
     });
     let body = await response.json();
         if (body.id) {

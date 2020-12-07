@@ -32,7 +32,7 @@ public class MainController {
 	GameService gameService;
 	
 
-	private class Login {
+	public static class Login {
 		String username;
 		String password;
 		public String getUsername() {
@@ -74,7 +74,7 @@ public class MainController {
 		}
 	}
 	
-    @GetMapping(value="/login")
+    @PostMapping(value="/login")
     public User getUser(@RequestBody Login login) {
 
     	User user = new User();
@@ -94,13 +94,13 @@ public class MainController {
 		return userService.getAll();
 	}
 
-    @PostMapping(value="/create/{username}")
+    @PostMapping(value="/create")
 
-    public boolean newUser(@RequestBody Login login) {
-//    	if(userService.exists(login.username)) {
-//    		return false;
+    public ResponseEntity<?> newUser(@RequestBody Login login) {
+    	if(!userService.exists(login.username)) {
+    		return false;
 
-//    	}else{
+    	}else{
     		User x = new User();
     		x.setUsername(login.getUsername());
     		x.setPassword(login.getPassword());
