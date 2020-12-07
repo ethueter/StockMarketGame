@@ -1392,3 +1392,6 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "UPDATE U
 SELECT[*] * FROM USERS"; SQL statement:
 UPDATE users SET archived=FALSE WHERE id=10000
 SELECT * FROM USERS [42000-200]
+2020-12-07 08:57:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "GAMES" not found; SQL statement:
+SELECT * FROM GAMES [42102-200]

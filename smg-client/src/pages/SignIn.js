@@ -17,10 +17,10 @@ const SignIn = (props) => {
 
     const handleChange = (event) => {
         if (event.target.id == "username") {
-            
+            console.log(event.target.value)
             setUsername(event.target.value);
         } else if (event.target.id == "password") {
-            
+            console.log(event.target.value);
             setPassword(event.target.value);
         }
     }

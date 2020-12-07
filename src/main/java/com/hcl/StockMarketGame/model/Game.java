@@ -13,23 +13,22 @@ import javax.persistence.Table;
 
 import java.sql.Timestamp;
 import java.util.Comparator;
-//import java.util.Date;
 
 @Data
 @Entity
 @Table(name="games")
 public class Game {// Table to store data on every game played
     public Game(){}
-    public Game(String username, int score, Gamemode gameMode){
-    	this.username = username;
+    public Game(int userId, int score, Gamemode gameMode){
+    	this.userId = userId;
     	this.score = score;
     	this.gameMode = gameMode;
     }
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    private String username;
-	@CreationTimestamp
+    private int userId;
+    @CreationTimestamp
     private Timestamp timestamp;
     private int score;
     @Enumerated(EnumType.STRING)
@@ -42,6 +41,6 @@ public class Game {// Table to store data on every game played
 	}
 	@Override
 	public String toString() {
-		return this.username + "|score=" + this.score + "|mode=" + this.gameMode;
+		return this.userId + "|score=" + this.score + "|mode=" + this.gameMode;
 	}
 }

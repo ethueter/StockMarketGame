@@ -17,12 +17,7 @@ import java.util.Date;
 @Table(name="users")
 public class User {// Table to store user data
 	// com.hackerrank.orm.enums.ItemStatus;
-    public User(){}
-    public User(String username, String password){
-    	this.username=username;
-    	this.password=password;
-    }
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	private String username;
@@ -33,12 +28,13 @@ public class User {// Table to store user data
     @CreationTimestamp
     private Timestamp last_login;
     private boolean archived = false;
-	public String getUsername() {
-		return username;
-	}
+	
     public void setUsername(String string) {
 		this.username=string;
 	}
+    public String getPassword() {
+    	return password;
+    }
 	public void setPassword(String string) {
 		this.password=string;
 	}
