@@ -99,17 +99,15 @@ public class MainController {
     @PostMapping(value="/create")
 
 
-    public ResponseEntity<?> newUser(@RequestBody Login login) {
+    public ResponseEntity<String> newUser(@RequestBody Login login) {
     	if(!userService.exists(login.username)) {
-    		return false;
-
-
+    		return new ResponseEntity<String>(HttpStatus.BAD_REQUEST); //400
     	}else{
     		User x = new User();
     		x.setUsername(login.getUsername());
     		x.setPassword(login.getPassword());
     		userService.post(x);
-    		return true;
+    		return new ResponseEntity<String>(HttpStatus.CREATED); //201
     	}
     }
     
