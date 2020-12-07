@@ -32,7 +32,7 @@ public class MainController {
 	GameService gameService;
 	
 
-	private class Login {
+	private static class Login {
 		String username;
 		String password;
 		public String getUsername() {
@@ -50,7 +50,7 @@ public class MainController {
 
 	}
 	
-	private class LogGame {
+	private static class LogGame {
 		String username;
 		int score;
 		String gameMode;
@@ -74,41 +74,37 @@ public class MainController {
 		}
 	}
 	
-    @GetMapping(value="/login")
+    @PostMapping(value="/login")
     public User getUser(@RequestBody Login login) {
-
     	User user = new User();
     	try{
     		user = userService.get(login.getUsername());
     	}catch(UsernameNotFoundException e) {
-    		e.printStackTrace();
+    		return new User();
     	}
-    	System.out.println(user);
-    	return user;
+    	if(login.getPassword().equals(user.getPassword())) {
+    		return user;
+    	}else {
+    		return new User();
+    	}
     }
 
-    
     @GetMapping(value="/users")
 	public List<User> getAll(){
-
 		return userService.getAll();
 	}
 
-    @PostMapping(value="/create/{username}")
-
+    @PostMapping(value="/create")
     public boolean newUser(@RequestBody Login login) {
-//    	if(userService.exists(login.username)) {
-//    		return false;
-
-//    	}else{
+    	if(userService.exists(login.username)) {
+    		return false;
+    	}else{
     		User x = new User();
     		x.setUsername(login.getUsername());
     		x.setPassword(login.getPassword());
     		userService.post(x);
-
     		return true;
-
-//    	}
+    	}
     }
     
     @GetMapping(value="/delete/{userId}")
@@ -116,7 +112,7 @@ public class MainController {
     	userService.delete(userId);
     }
     
-    @GetMapping(value="/newgame")
+    @PostMapping(value="/newgame")
     public void newGame(@RequestBody LogGame lg) {
     	Gamemode gm = Enum.valueOf(Gamemode.class, lg.getGameMode());
     	gameService.post(new Game(lg.getUsername(),lg.getScore(),gm));
@@ -126,17 +122,11 @@ public class MainController {
     @GetMapping(value="/leaderboard")
     public List<List<Game>> leaderboard(){
     	List<List<Game>> sortedGames = new ArrayList<List<Game>>();
-    	//List<List<Map<String,Game>>> lbd = new ArrayList<List<Map<String,Game>>>();
     	for(Gamemode gm : Gamemode.values()) {
     		List<Game> games = gameService.get(gm);
     		Collections.sort(games, (x,y) -> y.getScore()-x.getScore());
     		sortedGames.add(games);
     	}
-//    	for(List<Game> mode:sortedGames) {
-//    		Map<String,Game> map = new HashMap<String,Game>();
-//    		mode.forEach(game -> map.put(userService.get(game.getUserId()).getUsername(), game));
-//    	}
-    	//System.out.println(lbd);
     	return sortedGames;
     }
 }

@@ -39,6 +39,9 @@ public class User {// Table to store user data
     public void setUsername(String string) {
 		this.username=string;
 	}
+    public String getPassword() {
+    	return password;
+    }
 	public void setPassword(String string) {
 		this.password=string;
 	}
