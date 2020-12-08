@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const stocks = [
     {syb: "XOM" , name: "ExxonMobile" , price1: 38.41,price2: 38.50, price3: 38.98, price4: 39.04, price5: 39.70},

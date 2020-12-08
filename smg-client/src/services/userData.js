@@ -1,4 +1,4 @@
-import authHeader from './authHeader';
+
 
 
 const API_URL = "http://localhost:8080/";
@@ -54,7 +54,7 @@ const postNewScore = async (gameMode, score) => {
         score: score,
         gameMode: mode
     };
-    console.log('new game', newGame)
+    
     const response = await fetch(API_URL + "newgame", {
         method: "POST",
         mode: "cors",
@@ -65,7 +65,7 @@ const postNewScore = async (gameMode, score) => {
         },
         body: JSON.stringify(newGame)
     })
-    console.log('response', response.status);
+    
     let res = await response.status;
     return res;
 }

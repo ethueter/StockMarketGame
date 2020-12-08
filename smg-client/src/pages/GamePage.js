@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Button, Link, Grid, InputLabel, Select, MenuItem } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import InputLabel from '@material-ui/core/InputLabel';
+import Link from '@material-ui/core/Link';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import ToolBar from '@material-ui/core/Toolbar';
 import useinterval from 'react-useinterval';
 import Porfolio from '../components/Porfolio';
@@ -12,7 +18,7 @@ import Auth from '../services/auth';
 import Game from '../services/userData';
 
 const GamePage = () => {
-  const [portfolio, setPortfolio] = useState([]);
+  // const [portfolio, setPortfolio] = useState([]);
   const [cash, setCash ] = useState(100000);
   const [portValue, setPortValue] = useState(0);
   const [mktCall, setMktCall ] = useState();
@@ -30,7 +36,8 @@ const GamePage = () => {
 
   const testingEffect = () => {
     // console.log(mktCall["Meta Data"]["2. Symbol"]);
-    setGameOn(true);
+    gameOn ? setGameOn(false) : setGameOn(true)
+    
   }
 
   const buyStock = (stk, shares) => {

@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
-import { Box, Card, CardHeader, CardContent, Typography, CardActions, Button, FormControl, InputLabel, Select, MenuItem, Input } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Typography from '@material-ui/core/Typography';
 
-
+ 
 const TradingDesk = ({ stocks, buy, sell, cash, portVal }) => {
     const [buying, setBuying] = useState(true);
     const [deskTarget, setDeskTarget] = useState({});

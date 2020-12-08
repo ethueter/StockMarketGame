@@ -4,7 +4,7 @@ const API_URL = "http://localhost:8080/";
 
 const newUser = async (username, password) => {
     let newUser = {username: username, password: password};
-    console.log(newUser);
+    
     const response = await fetch(API_URL + 'create/', {
         method: 'POST',
         mode: 'cors',
@@ -16,7 +16,6 @@ const newUser = async (username, password) => {
         body: JSON.stringify(newUser)
     });
     
-    console.log(response.status)
     if(response.status === 200) {
         let body = await response.json();
         localStorage.setItem("user", JSON.stringify(body));

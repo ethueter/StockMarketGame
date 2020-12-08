@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Button } from '@material-ui/core';
-
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button'
 import LeaderBoard from './Leaderboard';
 import User from '../services/userData';
 
 
 
 const HomeContainer = () => {
-  const [playerScores, setPlayerScores] = useState([]);
+  // const [playerScores, setPlayerScores] = useState([]);
   const [leaderboard, setLeaderboard] = useState([[{userId: "loading", score: "loading", timestamp: "loading"}]]);
 
   const username = JSON.parse(localStorage.getItem("user"));
 
   const handleClick = async () => {
     let users = await User.getAllUsers();
-
     console.log(users)
-  }
+  };
 
   useEffect( async () => {
     // let myScores = await User.getGameScores();
