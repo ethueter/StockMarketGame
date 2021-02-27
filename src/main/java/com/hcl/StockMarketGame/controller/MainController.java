@@ -20,7 +20,6 @@ import com.hcl.StockMarketGame.model.User;
 import com.hcl.StockMarketGame.service.GameService;
 import com.hcl.StockMarketGame.service.UserService;
 
-
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class MainController {
